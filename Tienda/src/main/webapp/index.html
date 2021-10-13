@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title> Responsive Registration Form | CodingLab </title>
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript" src="login2.js"></script>
+   </head>
+<body>
+  <div class="container">
+    <div class="title">Usuarios</div>
+    <div class="content">
+      <form action="#">
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">id</span>
+            <input id="id" type="text" placeholder="Enter your name" required>
+          </div>
+          <div class="input-box">
+            <span class="details">usuario</span>
+            <input id="usuario" type="text" placeholder="Enter your username" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Email</span>
+            <input id="clave" type="text" placeholder="Enter your email" required>
+          </div><!-- 
+          <div class="input-box">
+            <span class="details">Phone Number</span>
+            <input type="text" placeholder="Enter your number" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Password</span>
+            <input type="text" placeholder="Enter your password" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Confirm Password</span>
+            <input type="text" placeholder="Confirm your password" required>
+          </div>-->
+        </div>
+        
+        <!-- 
+        <div class="button">
+          <input type="submit" value="Buscar">
+        </div>
+        <div class="button">
+          <input type="submit" value="Actualizar">
+        </div>
+        <div class="button">
+          <input type="submit" value="Agregar">
+        </div>
+        <div class="button">
+          <input type="submit" value="Eliminar">
+        </div>
+        <div class="button">
+          <input type="submit" value="Listar">
+        </div>-->
+        
+        <input id="buscarU" type="button" value="Buscar">
+		<input type="button" value="Agregar" id="agregarU">
+		<input type="button" value="Eliminar" id="eliminarU">
+		<input type="button" value="Actualizar" id="actualizarU">
+		<input type="button" value="Listar" id="listarU">
+		<br><br>
+        <div id="mensaje"></div>
+      </form>
+    </div>
+  </div>
+ 
+
+</body>
+</html>
