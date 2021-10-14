@@ -3,22 +3,19 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8">
-    <title> Usuarios</title>
+    <title> Clientes</title>
     <link rel="stylesheet" href="css/styleUsuarios.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script type="text/javascript" src="usuario.js"></script>
+	<script type="text/javascript" src="cliente.js"></script>
    </head>
 <body>
   <div class="container">
-    <div class="title">Usuarios</div>
+    <div class="title">Clientes</div>
     <div class="content">
       <form action="#">
         <div class="user-details">
-         <!--  <div class="input-box">
-            <span class="details">id</span>
-            <input id="id" type="text" placeholder="Ingrese id" required>
-          </div>-->
+         
           
           <div class="input-box">
             <span class="details">cedula</span>
@@ -29,37 +26,22 @@
             <input id="nombre" type="text" placeholder="Ingrese su nombre " required>
           </div>
            <div class="input-box">
+            <span class="details">Direccion</span>
+            <input id="direccion" type="text" placeholder="Ingrese su correo" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Telefono</span>
+            <input id="telefono" type="text" placeholder="Ingrese su usuario" required>
+          </div>
+          <div class="input-box">
             <span class="details">Correo</span>
-            <input id="correo" type="text" placeholder="Ingrese su correo" required>
-          </div>
-          <div class="input-box">
-            <span class="details">usuario</span>
-            <input id="usuario" type="text" placeholder="Ingrese su usuario" required>
-          </div>
-          <div class="input-box">
-            <span class="details">Clave</span>
-            <input id="clave" type="text" placeholder="Ingrese su clave" required>
+            <input id="correo" type="text" placeholder="Ingrese su clave" required>
           </div>
         </div>
           
          
         
-        <!-- 
-        <div class="button">
-          <input type="submit" value="Buscar">
-        </div>
-        <div class="button">
-          <input type="submit" value="Actualizar">
-        </div>
-        <div class="button">
-          <input type="submit" value="Agregar">
-        </div>
-        <div class="button">
-          <input type="submit" value="Eliminar">
-        </div>
-        <div class="button">
-          <input type="submit" value="Listar">
-        </div>-->
+        
         
         <input id="buscarU" type="button" value="Buscar">
 		<input type="button" value="Agregar" id="agregarU">
