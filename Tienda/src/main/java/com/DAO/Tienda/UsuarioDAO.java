@@ -17,8 +17,9 @@ public class UsuarioDAO {
 			
 			while(res.next()) {
 				UsuarioVO Usuario = new UsuarioVO();
-				Usuario.setId_usuario(res.getLong("id_usuario"));
-				
+				Usuario.setCedula(res.getLong("cedula"));
+				Usuario.setNombre(res.getString("nombre"));
+				Usuario.setCorreo(res.getString("correo"));
 				Usuario.setUsuario(res.getString("usuario"));
 				Usuario.setClave(res.getString("clave"));
 				misUsuarios.add(Usuario);
@@ -33,18 +34,21 @@ public class UsuarioDAO {
 	}
 	
 	/******************************************+*/
-	public ArrayList<UsuarioVO> buscarUsuario(long id_usuario){
+	public ArrayList<UsuarioVO> buscarUsuario(long cedula){
 		ArrayList<UsuarioVO> misUsuarios = new ArrayList<UsuarioVO>();
 		Conexion conex =new Conexion();
 		try {
-			PreparedStatement consulta = conex.getConnection().prepareStatement("SELECT * FROM tiendagenerica1.usuarios WHERE id_usuario=?");
-			consulta.setLong(1, id_usuario);
+			PreparedStatement consulta = conex.getConnection().prepareStatement("SELECT * FROM tiendagenerica1.usuarios WHERE cedula=?");
+			consulta.setLong(1, cedula);
 			ResultSet res = consulta.executeQuery();
 			
 			while(res.next()) {
 				UsuarioVO Usuario = new UsuarioVO();
 				
-				Usuario.setId_usuario(res.getLong("id_usuario"));
+				Usuario.setCedula(res.getLong("cedula"));
+			
+				Usuario.setNombre(res.getString("nombre"));
+				Usuario.setCorreo(res.getString("correo"));
 				Usuario.setUsuario(res.getString("usuario"));
 				Usuario.setClave(res.getString("clave"));
 				misUsuarios.add(Usuario);
@@ -59,12 +63,12 @@ public class UsuarioDAO {
 	}
 	
 	
-	public boolean existeUsuario(Long id_usuario){
+	public boolean existeUsuario(Long cedula){
 		boolean existe = false;
 		Conexion conex = new Conexion();
 		try {
-			PreparedStatement consulta = conex.getConnection().prepareStatement("SELECT * FROM tiendagenerica1.usuarios WHERE id_usuario=?");
-			consulta.setLong(1, id_usuario);			
+			PreparedStatement consulta = conex.getConnection().prepareStatement("SELECT * FROM tiendagenerica1.usuarios WHERE cedula=?");
+			consulta.setLong(1, cedula);			
 			ResultSet res = consulta.executeQuery();
 			
 			if(res.next()) {
@@ -74,7 +78,7 @@ public class UsuarioDAO {
 			consulta.close();
 			conex.desconectar();
 		}catch(Exception e) {
-			System.out.println("Nose pudo verificar si existe el usuario");
+			System.out.println("No se pudo verificar si existe el usuario");
 		}
 		return existe;
 	}
@@ -82,12 +86,14 @@ public class UsuarioDAO {
 	
 	public boolean crearUsuario(UsuarioVO Usuario){
 		boolean swCrear= false;
-		if(!existeUsuario(Usuario.getId_usuario())) {
+		if(!existeUsuario(Usuario.getCedula())) {
 			Conexion conex =new Conexion();
 			try {
 				Statement consulta = (Statement) conex.getConnection().createStatement();
-				String SQL = "INSERT INTO usuarios (id_usuario, usuario, clave) VALUES ("+
-						Usuario.getId_usuario()+",'"+Usuario.getUsuario()+"','"+Usuario.getClave()+"');";
+				String SQL = "INSERT INTO tiendagenerica1.usuarios (cedula, nombre, correo, usuario, clave) VALUES ("
+				+Usuario.getCedula()+",'"+Usuario.getNombre()+"','"+
+				 Usuario.getCorreo()+"','"+Usuario.getUsuario()+"','"+Usuario.getClave()+"');";
+				//String SQL = "INSERT INTO usuarios (id_usuario, cedula, nombre, correo, usuario, clave) VALUES ("+Usuario.getId_usuario()+",'"+Usuario.getCedula()+",'"+Usuario.getNombre()+",'"+Usuario.getCorreo()+",'"+Usuario.getUsuario()+"','"+Usuario.getClave()+"');'";
 				((java.sql.Statement) consulta).executeUpdate(SQL);
 				((java.sql.Statement) consulta).close();
 				conex.desconectar();
@@ -97,7 +103,7 @@ public class UsuarioDAO {
 			}
 				
 		}else {
-			System.out.println("El suarioa ya existe");
+			System.out.println("El usuarioa ya existe");
 		}
 		return swCrear;
 		
@@ -105,13 +111,13 @@ public class UsuarioDAO {
 	}
 
 	
-	public boolean borrarUsuario(Long id_usuario){
+	public boolean borrarUsuario(Long cedula){
 		boolean swCrear= false;
-		if(existeUsuario(id_usuario)) {
+		if(existeUsuario(cedula)) {
 			Conexion conex = new Conexion();
 			try {
 				Statement consulta = (Statement) conex.getConnection().createStatement();
-				String SQL = "DELETE FROM tiendagenerica1.usuarios WHERE id_usuario="+id_usuario; 
+				String SQL = "DELETE FROM tiendagenerica1.usuarios WHERE cedula="+cedula; 
 				//((java.sql.Statement) consulta).executeUpdate(SQL);	   
 				//((java.sql.Statement) consulta).close();
 				
@@ -134,12 +140,11 @@ public class UsuarioDAO {
 
 	public boolean actualizarUsuario(UsuarioVO Usuario){
 		boolean swActualizar= false;
-		if(existeUsuario(Usuario.getId_usuario())) {
+		if(existeUsuario(Usuario.getCedula())) {
 			Conexion conex =new Conexion();
 			try {
 				Statement consulta = (Statement) conex.getConnection().createStatement();
-				String SQL = "UPDATE tiendagenerica1.usuarios SET usuario='"+Usuario.getUsuario()+"',"+
-				"clave='"+Usuario.getClave()+"' WHERE id_usuario="+Usuario.getId_usuario(); 
+				String SQL = "UPDATE tiendagenerica1.usuarios SET nombre='"+Usuario.getNombre()+"',"+"correo='"+Usuario.getCorreo()+"',"+"usuario='"+Usuario.getUsuario()+"',"+"clave='"+Usuario.getClave()+"' WHERE cedula="+Usuario.getCedula(); 
 				((java.sql.Statement) consulta).executeUpdate(SQL);
 				((java.sql.Statement) consulta).close();
 				conex.desconectar();

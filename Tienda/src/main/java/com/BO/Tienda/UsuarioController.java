@@ -26,9 +26,9 @@ public class UsuarioController {
 	* @return
 	*/
 	@RequestMapping("/buscarusuarioID")
-	public ArrayList<UsuarioVO> buscarUsuario(String id_usuario){//revisar****
+	public ArrayList<UsuarioVO> buscarUsuario(String cedula){//revisar****
 		UsuarioDAO dao = new UsuarioDAO();
-		return dao.buscarUsuario(Long.parseLong(id_usuario));
+		return dao.buscarUsuario(Long.parseLong(cedula));
 	}
 	
 	
@@ -41,11 +41,14 @@ public class UsuarioController {
 	* @return
 	*/
 	@RequestMapping("/crearusuario")
-	public boolean crearUsuario(String id_usuario,String usuario,String clave) {
+	public boolean crearUsuario(String cedula, String nombre,String correo, String usuario,String clave) {
 		UsuarioDAO dao = new UsuarioDAO();
 		UsuarioVO Usuario = new UsuarioVO();
 		//Revisar*****
-		Usuario.setId_usuario(Long.parseLong(id_usuario));
+		Usuario.setCedula(Long.parseLong(cedula));
+		
+		Usuario.setNombre(nombre);
+		Usuario.setCorreo(correo);
 		Usuario.setUsuario(usuario);
 		Usuario.setClave(clave);
 		return dao.crearUsuario(Usuario);
@@ -58,9 +61,9 @@ public class UsuarioController {
 	* @return
 	*/
 	@RequestMapping("/borrarusuario")
-	public boolean borrarUsuario(String id_usuario) {
+	public boolean borrarUsuario(String cedula) {
 		UsuarioDAO dao = new UsuarioDAO();
-		return dao.borrarUsuario(Long.parseLong(id_usuario));
+		return dao.borrarUsuario(Long.parseLong(cedula));
 	}
 	
 	
@@ -72,10 +75,12 @@ public class UsuarioController {
 	* @return
 	*/
 	@RequestMapping("/actualizarusuario")
-	public boolean actualizarUsuario(String id_usuario,String usuario,String clave) {
+	public boolean actualizarUsuario(String cedula,String nombre,String correo,String usuario,String clave) {
 		UsuarioDAO dao = new UsuarioDAO();
 		UsuarioVO Usuario = new UsuarioVO();
-		Usuario.setId_usuario(Long.parseLong(id_usuario));
+		Usuario.setCedula(Long.parseLong(cedula));
+		Usuario.setNombre(nombre);
+		Usuario.setCorreo(correo);
 		Usuario.setUsuario(usuario);
 		Usuario.setClave(clave);
 		return dao.actualizarUsuario(Usuario);
