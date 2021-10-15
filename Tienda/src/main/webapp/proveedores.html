@@ -3,22 +3,21 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8">
-    <title> Clientes</title>
+    <title> Usuarios</title>
     <link rel="stylesheet" href="css/styleUsuarios.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script type="text/javascript" src="cliente.js"></script>
+	<script type="text/javascript" src="proveedor.js"></script>
    </head>
 <body>
   <div class="container">
-    <div class="title">Clientes</div>
+    <div class="title">Proveedores</div>
     <div class="content">
       <form action="#">
         <div class="user-details">
-         
-          
+                  
           <div class="input-box">
-            <span class="details">cedula</span>
+            <span class="details">NIT</span>
             <input id="id" type="text" placeholder="Ingrese su cedula" required>
           </div>
           <div class="input-box">
@@ -27,21 +26,36 @@
           </div>
            <div class="input-box">
             <span class="details">Direccion</span>
-            <input id="direccion" type="text" placeholder="Ingrese su direccion" required>
+            <input id="direccion" type="text" placeholder="Ingrese su correo" required>
           </div>
           <div class="input-box">
             <span class="details">Telefono</span>
-            <input id="telefono" type="text" placeholder="Ingrese su telefono" required>
+            <input id="telefono" type="text" placeholder="Ingrese su usuario" required>
           </div>
           <div class="input-box">
-            <span class="details">Correo</span>
-            <input id="correo" type="text" placeholder="Ingrese su correo" required>
+            <span class="details">Ciudad</span>
+            <input id="ciudad" type="text" placeholder="Ingrese su clave" required>
           </div>
         </div>
           
          
         
-        
+        <!-- 
+        <div class="button">
+          <input type="submit" value="Buscar">
+        </div>
+        <div class="button">
+          <input type="submit" value="Actualizar">
+        </div>
+        <div class="button">
+          <input type="submit" value="Agregar">
+        </div>
+        <div class="button">
+          <input type="submit" value="Eliminar">
+        </div>
+        <div class="button">
+          <input type="submit" value="Listar">
+        </div>-->
         
         <input id="buscarU" type="button" value="Buscar">
 		<input type="button" value="Agregar" id="agregarU">
