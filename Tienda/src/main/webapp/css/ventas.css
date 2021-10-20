@@ -1,0 +1,24 @@
+@charset "ISO-8859-1";
+
+@charset "ISO-8859-1";
+#lbl-codProducto{
+	margin:30px;
+}
+#lbl-totalVenta{
+	margin-left:472px;
+	
+}
+#lbl-totalIva{
+	margin-left:419px;
+	
+}
+#lbl-totalConIva{
+	margin-left:462px;
+	
+}
+#lbl-nomProducto{
+	margin: 63px;
+}
+#lbl_vlr{
+	margin:69px;
+}

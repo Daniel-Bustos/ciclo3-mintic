@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+	function listar(){
+		$.get("http://localhost:8080/listaproductos",function(data, status){
+		if(status=="success"){
+			let longitud = data.length;
+			let salida ="<table border='1'>";
+			salida = salida + "<tr><th>Codigo</th><th>NOMBRE</th><th>Nit</th><th>precio</th><th>iva</th><th>precio</th></tr>";
+			for(let i=0;i<longitud;i++){
+				salida = salida + "<tr>";
+				salida = salida + "<td>"+data[i].id_producto+"</td>";
+				salida = salida + "<td>"+data[i].nombre_producto+"</td>";
+				salida = salida + "<td>"+data[i].nit_proveedor+"</td>";
+				salida = salida + "<td>"+data[i].precio_compra+"</td>";
+				salida = salida + "<td>"+data[i].ivacompra+"</td>";
+				salida = salida + "<td>"+data[i].precio_venta+"</td>";
+				salida = salida + "</tr>";
+			}
+			salida = salida +"</table>";
+			$("#salida").html(salida);
+		}
+		});
+	}
+});
+</script>
+</head>
+<body>
+
+	<label>Cedula: </label><input type="text" id="codigo"><button id="btnBuscarId">Buscar</button><br>
+	<p id="mensaje"></p>
+	<label>Direccion: </label><input type="text" id="nombre"><br>
+	<label>Email: </label><input type="text" id="nit"><br>
+	<label>Nombre: </label><input type="text" id="precio_compra"><br>
+	<label>Telefono: </label><input type="text" id="iva"><br>
+	<label>Telefono: </label><input type="text" id="precio_venta"><br>
+	<button id="btnCrear">Crear Producto</button>
+	<button id="btnActualizar">Actualizar producto</button>
+	<button id="btnBorrar">Borrar producto</button>
+	<button id="btnLimpiar">Limpiar</button>
+	<hr>
+	<form method="POST" action="./cargarArchivo" enctype="multipart/form-data">
+		<label>Seleccione el archivo .csv </label><input type="file" name="archivoCSV" accept=".csv">
+		<input type="submit" value="Enviar">
+	</form>
+	<hr>
+	<hr>
+	<button id="btnBuscar">Solicitar Listado</button>
+	<div id="salida">
+	</div>
+	
+</body>
+</html>
